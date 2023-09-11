@@ -17,6 +17,11 @@ export default function Board() {
 
   //  クロージャをサポートしているので、外部の関数squaresにアクセスできる
   function handleClick(i) {
+    //  すでに阿知賀入っていたらこれ以上の処理はしない
+    if (squares[i]) {
+      return;
+    }
+
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
