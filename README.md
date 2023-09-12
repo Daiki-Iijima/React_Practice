@@ -6,7 +6,7 @@ React を勉強するためのリポジトリ
 
 Docker と VSCode の Dev Container を使う
 
-Docker はインストール済みとする
+- Docker,VSCode の Dev Container 拡張はインストール済みとする
 
 ### 1. Dev Container の準備
 
@@ -46,6 +46,10 @@ react_practice_root に移動して、プロジェクトをクローンする
 ```bash
 git clone https://github.com/Daiki-Iijima/React_Practice.git
 ```
+
+### 4.VSCode で react_practice_root を開く
+
+VSCode で react_practice_root を開くと、Dev Container を起動するか右下に表示されるので、起動する
 
 ### 3. 実行
 
