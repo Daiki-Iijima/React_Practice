@@ -27,7 +27,7 @@ $ touch devcontainer.json
 
 `.devcontainer/devcontainer.json` に以下の内容を記述
 
-````json
+```json
 .devcontainer/devcontainer.json{
 	"name": "Node.js",
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
@@ -41,7 +41,7 @@ $ touch devcontainer.json
 
 ### 2. リポジトリのクローン
 
-react_practice_rootに移動して、プロジェクトをクローンする
+react_practice_root に移動して、プロジェクトをクローンする
 
 ```bash
 git clone https://github.com/Daiki-Iijima/React_Practice.git
@@ -65,4 +65,3 @@ $ npm start
 ### 参考
 
 https://note.com/shift_tech/n/nf9c647e5264c
-````
