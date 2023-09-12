@@ -54,3 +54,28 @@ button {
   color: white;
   cursor: pointer;
 }
+
+/* メディアクエリで小さい画面サイズに対応 */
+@media only screen and (max-width: 600px) {
+  .App h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .displayPosts .post {
+    margin-top: 20px;
+    padding: 15px;
+    min-width: 0; /* これにより、ポストが小さいデバイスの幅に合わせて調整されます */
+    max-width: 90%; /* 余白を考慮 */
+  }
+
+  .displayPosts .postName {
+    font-size: 24px;
+  }
+
+  input, button {
+    width: 100%;
+    margin: 5px 0; 
+    box-sizing: border-box; /* 幅100%にしたときのパディングとボーダーを考慮 */
+  }
+}
