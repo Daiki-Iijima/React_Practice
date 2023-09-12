@@ -59,12 +59,12 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 
 export default function Game() {
-  //  どちらのプレイヤーの手番かを表現
-  const [xIsNext, setXIsNext] = useState(true);
   //  2重配列で、要素数が9の配列を持った配列を作成
   const [history, setHistory] = useState([Array(9).fill(null)]);
   //  現在の手番の位置
   const [currentMove, setCurrentMove] = useState(0);
+  //  どちらのプレイヤーの手番かを表現
+  const xIsNext = currentMove % 2 === 0;
   //  historyの現在の手番の位置を描画対象にする
   const currentSquares = history[currentMove];
 
@@ -75,14 +75,11 @@ export default function Game() {
     setHistory(nextHistory);
     //  次の手番は、履歴の最後の番号
     setCurrentMove(nextHistory.length - 1);
-    //  手番を交代
-    setXIsNext(!xIsNext);
   }
 
   //  ｍ巻き戻しボタンを押された場合
   function jumpto(nextMove) {
     setCurrentMove(nextMove);
-    setXIsNext(nextMove % 2 === 0);
   }
 
   const moves = history.map((squares, move) => {
