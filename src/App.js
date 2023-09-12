@@ -8,13 +8,7 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-export default function Board() {
-  //  どちらのプレイヤーおの手番かを表現
-  const [xIsNext, setXIsNext] = useState(true);
-  //  9個の要素を持つsquaresを生成してnullで初期化
-  //  他のコンポーネントからのアクセスはできない
-  const [squares, setSquares] = useState(Array(9).fill(null));
-
+function Board({ xIsNext, squares, onPlay }) {
   //  クロージャをサポートしているので、外部の関数squaresにアクセスできる
   function handleClick(i) {
     //  すでに値が入っていたらこれ以上の処理はしない
@@ -29,8 +23,8 @@ export default function Board() {
     } else {
       nextSquares[i] = "O";
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    //  最新の盤面を更新
+    onPlay(nextSquares);
   }
 
   const winner = calculateWinner(squares);
@@ -61,6 +55,34 @@ export default function Board() {
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
     </>
+  );
+}
+
+export default function Game() {
+  //  どちらのプレイヤーの手番かを表現
+  const [xIsNext, setXIsNext] = useState(true);
+  //  2重配列で、要素数が9の配列を持った配列を作成
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  //  historyの最後位置(最新)の盤面が現在の盤面
+  const currentSquares = history[history.length - 1];
+
+  //  最新の盤面が更新されたら呼ばれる
+  function handlePlay(nextSquares) {
+    //  既存のhistoryの末尾に最新の盤面を新しい配列として追加
+    setHistory([...history, nextSquares]);
+    //  手番を交代
+    setXIsNext(!xIsNext);
+  }
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+      </div>
+      <div className="game-info">
+        <ol>{/* TODO */}</ol>
+      </div>
+    </div>
   );
 }
 
